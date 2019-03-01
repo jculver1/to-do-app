@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ItemsComponent } from './items/items.component';
 import {HttpClientModule} from '@angular/common/http';
+import { AddFormComponent } from './add-form/add-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsComponent
+    ItemsComponent,
+    AddFormComponent
   ],
   imports: [
     BrowserModule,
