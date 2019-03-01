@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ListService} from '../list.service'
 
 @Component({
   selector: 'app-add-form',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddFormComponent implements OnInit {
 
-  constructor() { }
+  newDescription:string 
+
+
+  constructor(private stuff:ListService) { }
 
   ngOnInit() {
+    this.stuff.getList()
+  }
+
+  addItem(e:any) {
+    this.newDescription = e.target.value
+    console.log(e.target.value)
+  }
+
+  makePost(){
+    return this.stuff.postItem(this.newDescription)
   }
 
 }
