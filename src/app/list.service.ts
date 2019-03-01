@@ -10,13 +10,14 @@ export class ListService {
   constructor(private http:HttpClient) { }
 
   handleError:string = "Not able to add item"
+  server:string = "http://localhost:3001/"
 
 getList(){
-  return this.http.get('http://localhost:3001/')
+  return this.http.get(this.server)
 }
 
 postItem(item){
-  this.http.post("http://localhost:3001/",{
+  this.http.post(this.server,{
     "description" : item
   }).subscribe(
     (val) => {
@@ -30,6 +31,19 @@ postItem(item){
     }
   )}
 
-
-
+  deleteItem(id){
+    this.http.delete(`${this.server}${id}`)
+    .subscribe(
+        (val) => {
+            console.log("DELETE call successful value returned in body", 
+                        val);
+        },
+        response => {
+            console.log("DELETE call in error", response);
+        },
+        () => {
+            console.log("The DELETE observable is now completed.");
+        });
 }
+  }
+

@@ -24,4 +24,8 @@ export class ItemsComponent implements OnInit {
     })
   }
 
+  removeItem(id){
+    this.stuff.deleteItem(id)
+  }
+
 }
