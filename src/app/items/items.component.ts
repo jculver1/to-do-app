@@ -17,15 +17,22 @@ export class ItemsComponent implements OnInit {
 
   listData:{}
 
+  selectedId:number 
+
   readList(){
     this.stuff.getList().subscribe(data => {
       this.listData = data 
       console.log(data)
     })
+    return this.listData
   }
 
   removeItem(id){
     this.stuff.deleteItem(id)
+  }
+
+  editItem(id){
+    this.selectedId = id 
   }
 
 }

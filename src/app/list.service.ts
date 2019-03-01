@@ -5,12 +5,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ListService {
 
   constructor(private http:HttpClient) { }
 
   handleError:string = "Not able to add item"
   server:string = "http://localhost:3001/"
+  edit:boolean = false
 
 getList(){
   return this.http.get(this.server)
@@ -45,5 +47,30 @@ postItem(item){
             console.log("The DELETE observable is now completed.");
         });
 }
+
+putRequest(id, updateItem) {
+
+  const headers = new HttpHeaders()
+      .set("Content-Type", "application/json");
+  
+  this.http.put("/courses/-KgVwECOnlc-LHb_B0cQ.json",
+      {
+        "description" : updateItem
+      },
+      {headers})
+      .subscribe(
+          val => {
+              console.log("PUT call successful value returned in body", 
+                          val);
+          },
+          response => {
+              console.log("PUT call in error", response);
+          },
+          () => {
+              console.log("The PUT observable is now completed.");
+          }
+      );
+  }
+
   }
 
