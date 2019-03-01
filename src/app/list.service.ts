@@ -15,14 +15,6 @@ getList(){
   return this.http.get('http://localhost:3001/')
 }
 
-// postItem(item){
-//   return this.http.post('http://localhost:3001/',item,{
-//     headers: new HttpHeaders({
-//       "Content-Type" : "application/json"
-//     }) 
-//   })
-// }
-
 postItem(item){
   this.http.post("http://localhost:3001/",{
     "description" : item
