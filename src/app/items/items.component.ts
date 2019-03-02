@@ -19,6 +19,8 @@ export class ItemsComponent implements OnInit {
 
   selectedId:number 
 
+  clicked:boolean = false
+
   readList(){
     this.stuff.getList().subscribe(data => {
       this.listData = data 
@@ -33,6 +35,9 @@ export class ItemsComponent implements OnInit {
 
   editItem(id){
     this.selectedId = id 
+    this.clicked = !this.clicked 
+    console.log(id)
+    console.log(this.clicked)
   }
 
 }
