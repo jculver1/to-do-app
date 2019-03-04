@@ -2,7 +2,7 @@
 <div *ngFor="let item of listData" class="card" style="width: 18rem;">
   <div class ="card-body">
      <div [ngSwitch]="this.selectedId">
-        <ng-template [ngSwitchCase]="item.id && this.clicked === true">
+        <ng-template [ngSwitchCase]="item.id">
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </ng-template>
         <ng-template ngSwitchDefault>
